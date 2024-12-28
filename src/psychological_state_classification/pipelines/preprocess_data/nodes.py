@@ -22,6 +22,13 @@ def _parse_blood_pressure(x :pd.Series):
     print(type(x))
     return x
 
+def _rename_cols(columns :list):
+    """
+    Removes units from column names
+    """
+    columns = [x.split(' (')[0] for x in columns]
+    return columns
+
 def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     """
     Preprocess the data by splitting the EEG Power Bands and Blood Pressure columns
@@ -37,4 +44,6 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     data['Blood Pressure Diastolic'] = blood_pressure_split[1]
     data.drop(columns=['Blood Pressure (mmHg)'], inplace=True)
 
+    renamed_cols = _rename_cols(data.columns)
+    data.columns = renamed_cols
     return data
