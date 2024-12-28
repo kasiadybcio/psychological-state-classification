@@ -3,3 +3,31 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://docs.kedro.org/en/0.19.10/configuration/parameters.html
+data_types:
+  target_col: 'Mood_State'
+  categorical:
+    - 'Cognitive_Load'
+    - 'Mood_State'
+    - 'Psychological_State'
+    - 'Task_Type'
+    - 'Gender'
+    - 'Educational_Level'
+    - 'Study_Major'
+  float:
+    - 'HRV'
+    - 'GSR'
+    - 'Oxygen_Saturation'
+    - 'Ambient_Noise'
+    - 'Skin_Temp'
+    - 'EEG_Power_Bands_D'
+    - 'EEG_Power_Bands_A'
+    - 'EEG_Power_Bands_B'
+  integer:
+    - 'Heart_Rate'
+    - 'Respiration_Rate'
+    - 'Focus_Duration'
+    - 'Age'
+    - 'Blood_Pressure_Systolic'
+    - 'Blood_Pressure_Diastolic'
+  datetime:
+    - 'Time'

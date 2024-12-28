@@ -2,7 +2,11 @@
 This is a boilerplate pipeline 'preprocess_data'
 generated using Kedro 0.19.10
 """
+
+import logging
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 def _parse_eeg_bands(x :pd.Series):
     """
@@ -24,12 +28,35 @@ def _parse_blood_pressure(x :pd.Series):
 
 def _rename_cols(columns :list):
     """
-    Removes units from column names
+    Removes units from column names, replaces whitespace with "_"
     """
-    columns = [x.split(' (')[0] for x in columns]
+    columns = [x.split(' (')[0].replace(" ","_") for x in columns]
     return columns
 
-def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
+def _cast_data(data :pd.DataFrame, params: dict):
+    """
+    Cast the data types of the columns in the DataFrame based on the parameters_proces_data.yml
+    """
+    mapping_dict = {**{x:'category' for x in params['categorical']},
+                        **{x:float for x in params['float']},
+                        **{x:int for x in params['integer']},
+                        **{x:'datetime64[s]' for x in params['datetime']}}
+
+    cols_to_cast = params['categorical']+params['float']+params['integer']+params['datetime']
+    duplicated_cols = set([x for x in cols_to_cast if cols_to_cast.count(x) > 1])
+
+    if duplicated_cols:
+        logger.critical("Column type defined more than once in parameters_proces_data.yml: %s",
+                        duplicated_cols)
+
+    data = data.astype(mapping_dict)
+    missing_cols = set(data.columns) - set(mapping_dict.keys())
+
+    if missing_cols:
+        logger.warning("Column type not defined in parameters_proces_data.yml: %s", missing_cols)
+    return data
+
+def preprocess_data(data: pd.DataFrame, params: dict) -> pd.DataFrame:
     """
     Preprocess the data by splitting the EEG Power Bands and Blood Pressure columns
     """
@@ -49,4 +76,7 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
 
     renamed_cols = _rename_cols(data.columns)
     data.columns = renamed_cols
+
+    data = _cast_data(data, params)
+
     return data
