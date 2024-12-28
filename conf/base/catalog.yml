@@ -1,7 +1,17 @@
 raw_data:
   type: pandas.CSVDataset
   filepath: data/01_raw/psychological_state_dataset.csv
+  load_args:
+    sep: ','
+    encoding: 'utf-8'
+  save_args:
+    encoding: 'utf-8'
 
 preprocessed_data:
   type: pandas.CSVDataset
   filepath: data/02_intermediate/preprocessed_data.pkl
+  load_args:
+    encoding: 'utf-8'
+  save_args:
+    encoding: 'utf-8'
+    

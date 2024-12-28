@@ -33,6 +33,9 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     """
     Preprocess the data by splitting the EEG Power Bands and Blood Pressure columns
     """
+    # Drop ID column
+    data.drop(columns=['ID'], inplace=True)
+
     eeg_power_bands_split = _parse_eeg_bands(data['EEG Power Bands'])
     data['EEG Power Bands D'] = eeg_power_bands_split[0]
     data['EEG Power Bands A'] = eeg_power_bands_split[1]
