@@ -8,10 +8,13 @@ raw_data:
     encoding: 'utf-8'
 
 preprocessed_data:
-  type: pandas.CSVDataset
+  type: pickle.PickleDataset
   filepath: data/02_intermediate/preprocessed_data.pkl
-  load_args:
-    encoding: 'utf-8'
-  save_args:
-    encoding: 'utf-8'
-    
+
+train_data:
+  type: pickle.PickleDataset
+  filepath: data/03_primary/train_data.pkl
+
+test_data:
+  type: pickle.PickleDataset
+  filepath: data/03_primary/test_data.pkl
