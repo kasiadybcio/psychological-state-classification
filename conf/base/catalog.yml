@@ -1,20 +1,15 @@
 raw_data:
   type: pandas.CSVDataset
   filepath: data/01_raw/psychological_state_dataset.csv
-  load_args:
-    sep: ','
-    encoding: 'utf-8'
-  save_args:
-    encoding: 'utf-8'
 
 preprocessed_data:
-  type: pickle.PickleDataset
-  filepath: data/02_intermediate/preprocessed_data.pkl
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/preprocessed_data.csv
 
 train_data:
-  type: pickle.PickleDataset
-  filepath: data/03_primary/train_data.pkl
+  type: pandas.CSVDataset
+  filepath: data/03_primary/train_data.csv
 
 test_data:
-  type: pickle.PickleDataset
-  filepath: data/03_primary/test_data.pkl
+  type: pandas.CSVDataset
+  filepath: data/03_primary/test_data.csv
