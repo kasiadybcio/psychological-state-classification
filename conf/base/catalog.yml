@@ -11,5 +11,107 @@ train_data:
   filepath: data/03_primary/train_data.csv
 
 test_data:
-  type: pickle.PickleDataset
-  filepath: data/03_primary/test_data.pkl
+  type: pandas.CSVDataset
+  filepath: data/03_primary/test_data.csv
+
+plot_mood_state_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_mood_state_distribution_px.json
+  plotly_args:
+    type: pie
+    fig:
+      names: Mood_State
+      values: Count
+    layout:
+      xaxis_title: Mood State
+      # yaxis_title: Average passenger capacity
+      title: Mood State Distribution
+
+plot_HRV_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_HRV_distribution_px.json
+  plotly_args:
+    type: histogram
+    fig:
+      x: HRV
+    layout:
+      xaxis_title: HRV
+      # yaxis_title: Average passenger capacity
+      title: Heart Rate Variability Distribution
+
+plot_GSR_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_GSR_distribution_px.json
+  plotly_args:
+    type: histogram
+    fig:
+      x: GSR
+    layout:
+      xaxis_title: GSR
+      # yaxis_title: Average passenger capacity
+      title: Galvanic Skin Response Distribution
+
+plot_Age_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Age_distribution_px.json
+  plotly_args:
+    type: box
+    fig:
+      x: Age
+    layout:
+      xaxis_title: Age
+      # yaxis_title: Average passenger capacity
+      title: Student's Age Distribution
+
+plot_Heart_Rate_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Heart_Rate_distribution_px.json
+  plotly_args:
+    type: violin
+    fig:
+      x: Heart_Rate
+    layout:
+      xaxis_title: Heart Rate
+      # yaxis_title: Average passenger capacity
+      title: Student's Heart Rate Distribution
+
+plot_Gender_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Gender_distribution_px.json
+  plotly_args:
+    type: pie
+    fig:
+      names: Gender
+      values: Count2
+    layout:
+      xaxis_title: Gender
+      # yaxis_title: Average passenger capacity
+      title: Gender Distribution
+
+
+plot_Task_Type_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Task_Type_distribution_px.json
+  plotly_args:
+    type: pie
+    fig:
+      names: Task_Type
+      values: Count3
+    layout:
+      xaxis_title: Task_Type
+      # yaxis_title: Average passenger capacity
+      title: Task Type Distribution
+
+plot_Educational_Level_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Educational_Level_distribution_px.json
+  plotly_args:
+    type: pie
+    fig:
+      names: Educational_Level
+      values: Count4
+    layout:
+      xaxis_title: Educational_Level
+      # yaxis_title: Average passenger capacity
+      title: Educational Level Distribution
+
