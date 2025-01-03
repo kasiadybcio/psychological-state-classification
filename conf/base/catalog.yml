@@ -30,6 +30,9 @@ plot_mood_state_distribution_px:
 plot_HRV_distribution_px:
   type: plotly.PlotlyDataset
   filepath: data/03_primary/plot_HRV_distribution_px.json
+  metadata:
+    kedro-viz:
+      layer: raw
   plotly_args:
     type: histogram
     fig:
@@ -115,3 +118,70 @@ plot_Educational_Level_distribution_px:
       # yaxis_title: Average passenger capacity
       title: Educational Level Distribution
 
+
+plot_Mood_State_by_Gender_distribution_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Mood_State_by_Gender_distribution_px.json
+  versioned: true
+  plotly_args:
+    type: histogram
+    fig:
+     x: Gender
+     color: Mood_State
+    layout:
+      xaxis_title: Gender
+      yaxis_title: Moods State 
+      title: Mood State by Gender Distribution
+
+plot_Age_vs_Mood_State_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Age_vs_Mood_State_px.json
+  plotly_args:
+    type: box
+    fig:
+      x: Mood_State
+      y: Age
+    layout:
+      xaxis_title: Mood State
+      yaxis_title: Age
+      title: Age vs Mood State Distribution
+
+plot_Task_Type_vs_Educational_Level_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Task_Type_vs_Educational_Level_px.json
+  versioned: true
+  plotly_args:
+    type: histogram
+    fig:
+      x: Task_Type
+      color: Educational_Level
+    layout:
+      xaxis_title: Task Type
+      yaxis_title: Educational Level
+      title: Task Type vs Educational Level Distribution
+
+plot_Skin_Temp_vs_Mood_State_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Skin_Temp_vs_Mood_State_px.json
+  plotly_args:
+    type: box
+    fig:
+      x: Mood_State
+      y: Skin_Temp
+    layout:
+      xaxis_title: Mood State
+      yaxis_title: Skin Temp
+      title: Skin Temerature vs Mood State Distribution
+
+plot_Heart_Rate_vs_HRV_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Heart_Rate_vs_HRV_px.json
+  plotly_args:
+    type: scatter
+    fig:
+      x: Heart_Rate
+      y: HRV
+    layout:
+      xaxis_title: Heart Rate
+      yaxis_title: Heart Rate Variability
+      title: Heart Rate vs Heart Rate Variability Distribution

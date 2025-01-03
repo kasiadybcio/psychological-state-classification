@@ -70,6 +70,45 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="plot_Educational_Level_distribution_px",
             name="plot_Educational_Level_distribution",
             namespace='plotting'
+        ),
+
+        node(
+            plot_Mood_State_by_Gender_distribution,
+            inputs="train_data",
+            outputs="plot_Mood_State_by_Gender_distribution_px",
+            name="plot_Mood_State_by_Gender_distribution",
+            namespace='plotting'
+        ),
+
+        node(
+            plot_Age_vs_Mood_State,
+            inputs="train_data",
+            outputs="plot_Age_vs_Mood_State_px",
+            name="plot_Age_vs_Mood_State",
+            namespace='plotting'
+        ),
+        node(
+            plot_Task_Type_vs_Educational_Level,
+            inputs="train_data",
+            outputs="plot_Task_Type_vs_Educational_Level_px",
+            name="plot_Task_Type_vs_Educational_Level",
+            namespace='plotting'
+        ),
+        node(
+            plot_Skin_Temp_vs_Mood_State,
+            inputs="train_data",
+            outputs="plot_Skin_Temp_vs_Mood_State_px",
+            name="plot_Skin_Temp_vs_Mood_StateV_px",
+            namespace='plotting'
+        ),        
+
+
+        node(
+            plot_Heart_Rate_vs_HRV,
+            inputs="train_data",
+            outputs="plot_Heart_Rate_vs_HRV_px",
+            name="plot_Heart_Rate_vs_HRV_px",
+            namespace='plotting'
         )
     ])
 

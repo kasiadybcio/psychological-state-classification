@@ -65,3 +65,34 @@ def plot_Educational_Level_distribution(data: pd.DataFrame):
             .count()[['Time']]
             .reset_index()
             .rename(columns={'Time':'Count4'}))
+
+def plot_Mood_State_by_Gender_distribution(data: pd.DataFrame):
+    """
+    Plot the distribution of the target variable 
+    """
+    return data[['Mood_State','Gender']]
+
+def plot_Age_vs_Mood_State(data: pd.DataFrame):
+    """
+    Plot the distribution of the target variable 
+    """
+    return data[['Mood_State','Age']]
+
+def plot_Task_Type_vs_Educational_Level(data: pd.DataFrame):
+    """
+    Plot the distribution of the target variable 
+    """
+    return data[['Task_Type','Educational_Level']]
+
+def plot_Skin_Temp_vs_Mood_State(data: pd.DataFrame):
+    """
+    Plot the distribution of the target variable 
+    """
+    return data[['Mood_State','Skin_Temp']]
+
+def plot_Heart_Rate_vs_HRV(data: pd.DataFrame):
+    """
+    Plot the distribution of the target variable 
+    """
+    return data[['Heart_Rate','HRV']]
+    
