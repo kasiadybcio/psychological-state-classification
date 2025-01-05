@@ -6,23 +6,22 @@ raw_data:
       layer: raw
 
 preprocessed_data:
-  type: pandas.CSVDataset
-  filepath: data/02_intermediate/preprocessed_data.csv
+  type: pickle.PickleDataset
+  filepath: data/02_intermediate/preprocessed_data.pkl
   metadata:
     kedro-viz:
       layer: intermediate
 
 train_data:
-  type: pandas.CSVDataset
-  filepath: data/03_primary/train_data.csv
+  type: pickle.PickleDataset
+  filepath: data/03_primary/train_data.pkl
   metadata:
     kedro-viz:
       layer: primary
 
-
 test_data:
-  type: pandas.CSVDataset
-  filepath: data/03_primary/test_data.csv
+  type: pickle.PickleDataset
+  filepath: data/03_primary/test_data.pkl
   metadata:
     kedro-viz:
       layer: primary
