@@ -95,4 +95,11 @@ def plot_Heart_Rate_vs_HRV(data: pd.DataFrame):
     Plot the distribution of the target variable 
     """
     return data[['Heart_Rate','HRV']]
+
+def plot_Time(data: pd.DataFrame):
+    """
+    Plot the distribution of the target variable 
+    """
+    return  pd.to_datetime(data['Time']).dt.time
+
     
