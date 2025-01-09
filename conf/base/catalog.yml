@@ -272,3 +272,18 @@ plot_Heart_Rate_vs_HRV_px:
       xaxis_title: Heart Rate
       yaxis_title: Heart Rate Variability
       title: Heart Rate vs Heart Rate Variability Distribution
+
+plot_Time_px:
+  type: plotly.PlotlyDataset
+  filepath: data/03_primary/plot_Time_px.json
+  metadata:
+    kedro-viz:
+      layer: intermediate
+  plotly_args:
+    type: line
+    fig:
+      x: Time
+    layout:
+      xaxis_title: Time
+      title: Time Distribution
+

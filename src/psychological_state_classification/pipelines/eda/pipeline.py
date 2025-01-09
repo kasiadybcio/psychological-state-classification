@@ -70,6 +70,15 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="plot_Educational_Level_distribution_px",
             name="plot_Educational_Level_distribution",
             namespace='plotting1'
+        ),        
+
+
+        node(
+            plot_Time,
+            inputs="preprocessed_data",
+            outputs="plot_Time_px",
+            name="plot_Time_px",
+            namespace='plotting1'
         )
     ])
 
