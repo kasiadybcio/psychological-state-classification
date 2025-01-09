@@ -24,7 +24,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             namespace='plotting1'
         ),
 
-         node(
+        node(
             plot_GSR_distribution,
             inputs="preprocessed_data",
             outputs="plot_GSR_distribution_px",
@@ -102,8 +102,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="plot_Skin_Temp_vs_Mood_State_px",
             name="plot_Skin_Temp_vs_Mood_StateV_px",
             namespace='plotting2'
-        ),        
-
+        ),
 
         node(
             plot_Heart_Rate_vs_HRV,
@@ -114,4 +113,4 @@ def create_pipeline(**kwargs) -> Pipeline:
         )
     ])
 
-    return plotting1 + plotting2
+    return pipeline([plotting1, plotting2])

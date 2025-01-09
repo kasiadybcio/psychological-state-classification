@@ -10,7 +10,7 @@ def plot_mood_state_distribution(data: pd.DataFrame):
     """
     Plot the distribution of the target variable 'mood'
     """
-    return (data.groupby('Mood_State')
+    return (data.groupby('Mood_State', observed=False)
             .count()[['Time']]
             .reset_index()
             .rename(columns={'Time':'Count'}))
@@ -43,7 +43,7 @@ def plot_Gender_distribution(data: pd.DataFrame):
     """
     Plot the distribution of the target variable 'Gender'
     """
-    return (data.groupby('Gender')
+    return (data.groupby('Gender', observed=False)
             .count()[['Time']]
             .reset_index()
             .rename(columns={'Time':'Count2'}))
@@ -52,7 +52,7 @@ def plot_Task_Type_distribution(data: pd.DataFrame):
     """
     Plot the distribution of the target variable 'Task_Type'
     """
-    return (data.groupby('Task_Type')
+    return (data.groupby('Task_Type', observed=False)
             .count()[['Time']]
             .reset_index()
             .rename(columns={'Time':'Count3'}))
@@ -61,7 +61,7 @@ def plot_Educational_Level_distribution(data: pd.DataFrame):
     """
     Plot the distribution of the target variable 'Educational_Level'
     """
-    return (data.groupby('Educational_Level')
+    return (data.groupby('Educational_Level', observed=False)
             .count()[['Time']]
             .reset_index()
             .rename(columns={'Time':'Count4'}))
@@ -95,4 +95,3 @@ def plot_Heart_Rate_vs_HRV(data: pd.DataFrame):
     Plot the distribution of the target variable 
     """
     return data[['Heart_Rate','HRV']]
-    

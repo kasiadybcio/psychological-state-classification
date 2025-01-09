@@ -56,7 +56,7 @@ def _cast_data(data :pd.DataFrame, params: dict):
         logger.warning("Column type not defined in parameters_proces_data.yml: %s", missing_cols)
     return data
 
-def preprocess_data(data: pd.DataFrame, params: dict) -> pd.DataFrame:
+def preprocess_data(data: pd.DataFrame, params: dict):
     """
     Preprocess the data by splitting the EEG Power Bands and Blood Pressure columns
     """

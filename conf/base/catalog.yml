@@ -26,6 +26,48 @@ test_data:
     kedro-viz:
       layer: primary
 
+processed_cat_train:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/processed_cat_train.pkl
+  metadata:
+    kedro-viz:
+      layer: feature
+
+processed_cat_test:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/processed_cat_test.pkl
+  metadata:
+    kedro-viz:
+      layer: feature
+
+processed_num_train:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/processed_num_train.pkl
+  metadata:
+    kedro-viz:
+      layer: feature
+
+processed_num_test:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/processed_num_test.pkl
+  metadata:
+    kedro-viz:
+      layer: feature
+
+final_train_data:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/final_train_data.pkl
+  metadata:
+    kedro-viz:
+      layer: feature
+
+final_test_data:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/final_test_data.pkl
+  metadata:
+    kedro-viz:
+      layer: feature
+
 plot_mood_state_distribution_px:
   type: plotly.PlotlyDataset
   filepath: data/03_primary/plot_mood_state_distribution_px.json
@@ -40,6 +82,7 @@ plot_mood_state_distribution_px:
     layout:
       xaxis_title: Mood State
       title: Mood State Distribution
+    observable: True
 
 plot_HRV_distribution_px:
   type: plotly.PlotlyDataset
@@ -54,6 +97,7 @@ plot_HRV_distribution_px:
     layout:
       xaxis_title: HRV
       title: Heart Rate Variability Distribution
+    nbins: 80
 
 plot_GSR_distribution_px:
   type: plotly.PlotlyDataset
@@ -68,6 +112,7 @@ plot_GSR_distribution_px:
     layout:
       xaxis_title: GSR
       title: Galvanic Skin Response Distribution
+    nbins: 80
 
 plot_Age_distribution_px:
   type: plotly.PlotlyDataset
@@ -160,6 +205,7 @@ plot_Mood_State_by_Gender_distribution_px:
       xaxis_title: Gender
       yaxis_title: Moods State 
       title: Mood State by Gender Distribution
+    nbins: 80
 
 plot_Age_vs_Mood_State_px:
   type: plotly.PlotlyDataset
@@ -193,6 +239,7 @@ plot_Task_Type_vs_Educational_Level_px:
       xaxis_title: Task Type
       yaxis_title: Educational Level
       title: Task Type vs Educational Level Distribution
+    nbins: 80
 
 plot_Skin_Temp_vs_Mood_State_px:
   type: plotly.PlotlyDataset
