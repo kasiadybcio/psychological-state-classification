@@ -3,3 +3,50 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://docs.kedro.org/en/0.19.10/configuration/parameters.html
+
+num_transform:
+  normalize:
+  - HRV
+  standardize:
+  - GSR
+  - Oxygen_Saturation
+  - Heart_Rate
+  - Ambient_Noise
+  - Respiration_Rate
+  - Skin_Temp
+  - Focus_Duration
+  - Age
+  - EEG_Power_Bands_D
+  - EEG_Power_Bands_A
+  - EEG_Power_Bands_B
+  - Blood_Pressure_Systolic
+  - Blood_Pressure_Diastolic
+  winsorize:
+  -
+
+cat_transform:
+  onehot:
+  - Gender
+  catboost:
+  - Study_Major
+  - Psychological_State
+  - Task_Type
+  ordinal:
+  - Cognitive_Load
+  - Educational_Level
+  target:
+  - Mood_State
+
+  # Define the order of the categories lowest, highest
+ordinal_order:
+  Cognitive_Load:
+  - 'Low'
+  - 'Moderate'
+  - 'High'
+  Educational_Level:
+  - "High School"
+  - "Undergraduate"
+  - "Postgraduate"
+
+col_drop:
+  - Time
