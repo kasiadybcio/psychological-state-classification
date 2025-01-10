@@ -68,6 +68,60 @@ final_test_data:
     kedro-viz:
       layer: feature
 
+feat_rank_stat_results:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/feat_rank_stat_results.csv
+  metadata:
+    kedro-viz:
+      layer: feature
+      preview_args:
+        nrows: 20
+
+feat_rank_corr_results:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/feat_rank_corr_results.csv
+  metadata:
+    kedro-viz:
+      layer: feature
+      preview_args:
+        nrows: 20
+
+feat_backward_results:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/feat_backward_results.csv
+  metadata:
+    kedro-viz:
+      layer: feature
+      preview_args:
+        nrows: 20
+
+feat_forward_results:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/feat_forward_results.csv
+  metadata:
+    kedro-viz:
+      layer: feature
+      preview_args:
+        nrows: 20
+
+train_model:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/train_model.pkl
+  metadata:
+    kedro-viz:
+      layer: model
+
+test_model:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/test_model.pkl
+  metadata:
+    kedro-viz:
+      layer: model
+
+selected_features:
+  type: tracking.JSONDataset
+  filepath: data/09_tracking/selected_features.json
+
 plot_mood_state_distribution_px:
   type: plotly.PlotlyDataset
   filepath: data/03_primary/plot_mood_state_distribution_px.json
@@ -195,7 +249,6 @@ plot_Mood_State_by_Gender_distribution_px:
   metadata:
     kedro-viz:
       layer: primary
-  versioned: true
   plotly_args:
     type: histogram
     fig:
@@ -229,7 +282,6 @@ plot_Task_Type_vs_Educational_Level_px:
   metadata:
     kedro-viz:
       layer: primary
-  versioned: true
   plotly_args:
     type: histogram
     fig:

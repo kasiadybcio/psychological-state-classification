@@ -1,0 +1,11 @@
+# This is a boilerplate parameters config generated for pipeline 'feature_selection'
+# using Kedro 0.19.10.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.10/configuration/parameters.html
+
+fs_params:
+  target: "Mood_State"
+  n_vars: 14 # all
+  method: "backward" # rank_stat, rank_corr, backward, forward
+  kwarg: "GBM" # for rank_stat [anova, kruskal] for backward and forward [KNN,GBN,LogReg]
