@@ -95,8 +95,8 @@ def _ordinal_encode(train_df,test_df,col,map_dict):
         logger.warning("Missing order for value %s", missing_val)
         mapping.update({x:np.nan for x in missing_val})
 
-    train_df[col] = train_df[col].map(mapping)
-    test_df[col] = test_df[col].map(mapping)
+    train_df[col] = train_df[col].map(mapping).astype('int')
+    test_df[col] = test_df[col].map(mapping).astype('int')
     return train_df, test_df
 
 def process_cat(train_df, test_df, params, params_ordinal):
