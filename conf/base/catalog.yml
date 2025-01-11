@@ -86,23 +86,23 @@ feat_rank_corr_results:
       preview_args:
         nrows: 20
 
-feat_backward_results:
-  type: pandas.CSVDataset
-  filepath: data/04_feature/feat_backward_results.csv
-  metadata:
-    kedro-viz:
-      layer: feature
-      preview_args:
-        nrows: 20
+# feat_backward_results:
+#   type: pandas.CSVDataset
+#   filepath: data/04_feature/feat_backward_results.csv
+#   metadata:
+#     kedro-viz:
+#       layer: feature
+#       preview_args:
+#         nrows: 20
 
-feat_forward_results:
-  type: pandas.CSVDataset
-  filepath: data/04_feature/feat_forward_results.csv
-  metadata:
-    kedro-viz:
-      layer: feature
-      preview_args:
-        nrows: 20
+# feat_forward_results:
+#   type: pandas.CSVDataset
+#   filepath: data/04_feature/feat_forward_results.csv
+#   metadata:
+#     kedro-viz:
+#       layer: feature
+#       preview_args:
+#         nrows: 20
 
 train_model:
   type: pickle.PickleDataset
@@ -121,6 +121,79 @@ test_model:
 selected_features:
   type: tracking.JSONDataset
   filepath: data/09_tracking/selected_features.json
+
+initial_cv_score:
+  type: tracking.MetricsDataset
+  filepath: data/09_tracking/initial_cv_score.json
+  metadata:
+    kedro-viz:
+      layer: initial_model
+
+LR_optuna_params:
+  type: tracking.JSONDataset
+  filepath: data/09_tracking/LR_optuna_params.json
+  metadata:
+    kedro-viz:
+      layer: hyperparameter_tuning
+
+LR_optuna_params_:
+  type: json.JSONDataset
+  filepath: data/09_tracking/LR_optuna_params.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: hyperparameter_tuning
+
+LGBM_optuna_params:
+  type: tracking.JSONDataset
+  filepath: data/09_tracking/LGBM_optuna_params.json
+  metadata:
+    kedro-viz:
+      layer: hyperparameter_tuning
+
+LGBM_optuna_params_:
+  type: json.JSONDataset
+  filepath: data/09_tracking/LGBM_optuna_params.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: hyperparameter_tuning
+
+XGB_optuna_params:
+  type: tracking.JSONDataset
+  filepath: data/09_tracking/XGB_optuna_params.json
+  metadata:
+    kedro-viz:
+      layer: hyperparameter_tuning
+
+XGB_optuna_params_:
+  type: json.JSONDataset
+  filepath: data/09_tracking/XGB_optuna_params.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: hyperparameter_tuning
+
+models_evaluation:
+  type: tracking.MetricsDataset
+  filepath: data/09_tracking/models_evaluation.json
+  metadata:
+    kedro-viz:
+      layer: model_output
+
+y_train_preds:
+  type: pickle.PickleDataset
+  filepath: data/07_model_output/y_train_preds.pkl
+  metadata:
+    kedro-viz:
+      layer: model_output
+
+y_test_preds:
+  type: pickle.PickleDataset
+  filepath: data/07_model_output/y_test_preds.pkl
+  metadata:
+    kedro-viz:
+      layer: model_output
 
 plot_mood_state_distribution_px:
   type: plotly.PlotlyDataset
