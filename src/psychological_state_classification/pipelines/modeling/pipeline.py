@@ -18,19 +18,19 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             func=optimize_lr_hyperparams,
             inputs=['train_model', 'params:params'],
-            outputs='LR_optuna_params',
+            outputs=['LR_optuna_params','LR_optuna_params_'],
             name='optimize_lr_hyperparams_node'
         ),
         node(
             func=optimize_lgbm_hyperparams,
             inputs=['train_model', 'params:params'],
-            outputs='LGBM_optuna_params',
+            outputs=['LGBM_optuna_params','LGBM_optuna_params_'],
             name='optimize_lgbm_hyperparams_node'
         ),
         node(
             func=optimize_xgb_hyperparams,
             inputs=['train_model', 'params:params'],
-            outputs='XGB_optuna_params',
+            outputs=['XGB_optuna_params','XGB_optuna_params_'],
             name='optimize_xgb_hyperparams_node'
         ),
         node(

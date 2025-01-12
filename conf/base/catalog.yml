@@ -138,7 +138,7 @@ LR_optuna_params:
 
 LR_optuna_params_:
   type: json.JSONDataset
-  filepath: data/09_tracking/LR_optuna_params.json
+  filepath: data/09_tracking/LR_optuna_params_.json
   versioned: True
   metadata:
     kedro-viz:
@@ -153,7 +153,7 @@ LGBM_optuna_params:
 
 LGBM_optuna_params_:
   type: json.JSONDataset
-  filepath: data/09_tracking/LGBM_optuna_params.json
+  filepath: data/09_tracking/LGBM_optuna_params_.json
   versioned: True
   metadata:
     kedro-viz:
@@ -168,7 +168,7 @@ XGB_optuna_params:
 
 XGB_optuna_params_:
   type: json.JSONDataset
-  filepath: data/09_tracking/XGB_optuna_params.json
+  filepath: data/09_tracking/XGB_optuna_params_.json
   versioned: True
   metadata:
     kedro-viz:

@@ -92,15 +92,15 @@ def _get_optuna_params(train, model_class, param_space, params):
 
 def optimize_lr_hyperparams(train, params):
     res = _get_optuna_params(train, LogisticRegression, _logistic_param_space, params)
-    return res
+    return res, res
 
 def optimize_lgbm_hyperparams(train, params):
     res = _get_optuna_params(train, LGBMClassifier, _lgbm_param_space, params)
-    return res
+    return res, res
 
 def optimize_xgb_hyperparams(train, params):
     res = _get_optuna_params(train, XGBClassifier, _xgb_param_space, params)
-    return res
+    return res, res
 
 def _train_model(train, model, params):
     target_column = params['target']
