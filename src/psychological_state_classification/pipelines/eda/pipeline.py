@@ -143,6 +143,13 @@ def create_pipeline(**kwargs) -> Pipeline:
             namespace='plotting_evaluaton'
         ),
         node(
+            plot_confusion_matrix_ada,
+            inputs="y_test_preds",
+            outputs="plot_confusion_matrix_ada_px",
+            name="plot_confusion_matrix_ada_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
             plot_roc_auc_xgb,
             inputs="y_test_preds",
             outputs="plot_roc_auc_xgb_px",
@@ -162,8 +169,22 @@ def create_pipeline(**kwargs) -> Pipeline:
             outputs="plot_roc_auc_lr_px",
             name="plot_roc_auc_lr_px",
             namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_roc_auc_ada,
+            inputs="y_test_preds",
+            outputs="plot_roc_auc_ada_px",
+            name="plot_roc_auc_ada_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_feature_importance_xgb,
+            inputs=['train_model','XGB_optuna_params_'],
+            outputs="plot_fi_xgb_px",
+            name='plot_fi_xgb_px',
+            namespace='plotting_evaluaton'
         )
-        
+
     ])
 
     return pipeline([plotting1, plotting2, plotting3])

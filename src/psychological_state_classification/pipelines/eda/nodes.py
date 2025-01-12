@@ -6,6 +6,7 @@ import plotly.express as px
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import roc_curve, auc
+from xgboost import XGBClassifier
 
 def plot_mood_state_distribution(data: pd.DataFrame):
     """
@@ -126,6 +127,12 @@ def plot_confusion_matrix_lr(y_preds: pd.DataFrame):
     """
     return _conf_matrix(y_preds, 'lr')
 
+def plot_confusion_matrix_ada(y_preds: pd.DataFrame):
+    """
+    Plot the confusion matrix of the target variable 
+    """
+    return _conf_matrix(y_preds, 'ada')
+
 def _plot_roc_auc(y_preds: pd.DataFrame, model_name):
     y_preds=y_preds.query(f"model=='{model_name}'")
     labels = y_preds['true_label'].unique()
@@ -133,7 +140,7 @@ def _plot_roc_auc(y_preds: pd.DataFrame, model_name):
     for label in labels:
         # Binarize true labels for the current class
         true_labels = (y_preds["true_label"] == label).astype(int)
-        
+
         # Get probabilities for the current class
         proba = y_preds[f"{label}_proba"]
 
@@ -164,3 +171,21 @@ def plot_roc_auc_lr(y_preds: pd.DataFrame):
     Plot the ROC-AUC curve of the target variable 
     """
     return _plot_roc_auc(y_preds, 'lr')
+
+def plot_roc_auc_ada(y_preds: pd.DataFrame):
+    """
+    Plot the ROC-AUC curve of the target variable 
+    """
+    return _plot_roc_auc(y_preds, 'ada')
+
+def plot_feature_importance_xgb(train, xgb_params):
+    """
+    Plot the feature importance of the target variable 
+    """
+    xgb = XGBClassifier(**xgb_params)
+    xgb.fit(train.drop(columns=['Mood_State']), train['Mood_State'].cat.codes)
+    feature_importance = xgb.feature_importances_
+    features = train.drop(columns=['Mood_State']).columns
+    data = pd.DataFrame({'features': features, 'importance': feature_importance})
+    data = data.sort_values('importance', ascending=False)
+    return data

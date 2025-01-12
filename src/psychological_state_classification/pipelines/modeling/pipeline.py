@@ -38,9 +38,17 @@ def create_pipeline(**kwargs) -> Pipeline:
             namespace='hyperparameter_tuning'
         ),
         node(
+            func=optimize_ada_hyperparams,
+            inputs=['train_model', 'params:params'],
+            outputs=['ADA_optuna_params','ADA_optuna_params_'],
+            name='optimize_ada_hyperparams_node',
+            namespace='hyperparameter_tuning'
+        ),
+        node(
             func=eval_best_models,
             inputs=['train_model', 'test_model',
-                    'LR_optuna_params_', 'LGBM_optuna_params_', 'XGB_optuna_params_',
+                    'LR_optuna_params_', 'LGBM_optuna_params_', 
+                    'XGB_optuna_params_','ADA_optuna_params_',
                     'params:params'],
             outputs=['models_evaluation', 'y_train_preds', 'y_test_preds'],
             name='eval_best_models_node'

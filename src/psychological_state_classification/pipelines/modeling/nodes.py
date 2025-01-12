@@ -8,6 +8,8 @@ from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
 import optuna
 import pandas as pd
 
@@ -42,6 +44,14 @@ def _logistic_param_space(trial):
         'penalty': trial.suggest_categorical("penalty", ['l1', 'l2'])
     }
 
+def _ada_param_space(trial):
+    # trial.set_user_attr('estimator', DecisionTreeClassifier(max_depth=1))
+    return {
+        # 'estimator': trial.user_attrs['estimator'],
+        'n_estimators': trial.suggest_int("n_estimators", 10, 500),
+        'learning_rate': trial.suggest_float("learning_rate", 0.01, 10, log=True)
+    }
+
 def get_initial_score(train, params):
     target_column = params['target']
     scoring_method = params['scoring']
@@ -49,7 +59,8 @@ def get_initial_score(train, params):
     models = {
         'xgb': XGBClassifier(objective='multi:softprob', num_class=4),
         'lr': LogisticRegression(),
-        'lgbm': LGBMClassifier(objective='multiclass', num_class=4)
+        'lgbm': LGBMClassifier(objective='multiclass', num_class=4),
+        'ada': AdaBoostClassifier(DecisionTreeClassifier(max_depth=1))
     }
     x_train = train.drop(columns=[target_column])
     y_train = train[target_column].cat.codes
@@ -66,6 +77,8 @@ def _get_optuna_params(train, model_class, param_space, params):
     target_column = params['target']
     scoring_method = params['scoring']
     n_trials = params['n_trials']
+    if model_class == AdaBoostClassifier:
+        params['estimator']=DecisionTreeClassifier(max_depth=1)
     def objective(trial):
         # Generate the hyperparameters using the param_space function
         model_params = param_space(trial)
@@ -100,6 +113,10 @@ def optimize_lgbm_hyperparams(train, params):
 
 def optimize_xgb_hyperparams(train, params):
     res = _get_optuna_params(train, XGBClassifier, _xgb_param_space, params)
+    return res, res
+
+def optimize_ada_hyperparams(train, params):
+    res = _get_optuna_params(train, AdaBoostClassifier, _ada_param_space, params)
     return res, res
 
 def _train_model(train, model, params):
@@ -139,12 +156,16 @@ def _evaluate_model(model, train, test, params):
 
     return res_dict, y_pred_train_proba, y_pred_test_proba
 
-def eval_best_models(train, test, LR_optuna_params, LGBM_optuna_params, XGB_optuna_params, params):
-
+def eval_best_models(train, test, 
+                    LR_optuna_params, LGBM_optuna_params, 
+                    XGB_optuna_params, ADA_optuna_params,
+                    params):
+    ADA_optuna_params['estimator']=DecisionTreeClassifier(max_depth=1)
     models = {
         'xgb': XGBClassifier(**XGB_optuna_params),
         'lr': LogisticRegression(**LR_optuna_params),
-        'lgbm': LGBMClassifier(**LGBM_optuna_params)
+        'lgbm': LGBMClassifier(**LGBM_optuna_params),
+        'ada': AdaBoostClassifier(**ADA_optuna_params)
     }
 
     results = {}
