@@ -74,13 +74,11 @@ def _get_feat_sfs(train, params):
         'LogReg':LogisticRegression()
     }
 
-    for name, model in models.items():
-        if name in params['kwarg']:
-            sfs = SequentialFeatureSelector(model,
-                                            n_features_to_select=n_vars,
-                                            direction=params['method'])
-            sfs.fit(train[columns], train[target_col])
-            results[name] = sfs.get_feature_names_out()
+    sfs = SequentialFeatureSelector(models.get(params['kwarg']),
+                                    n_features_to_select=n_vars,
+                                    direction=params['method'])
+    sfs.fit(train[columns], train[target_col])
+    results[params['kwarg']] = sfs.get_feature_names_out()
     return pd.DataFrame(results)
 
 def _get_selected_features(train,stat_res,corr_res,params):
