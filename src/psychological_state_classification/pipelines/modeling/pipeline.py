@@ -13,25 +13,29 @@ def create_pipeline(**kwargs) -> Pipeline:
             func=get_initial_score,
             inputs=['train_model', 'params:params'],
             outputs='initial_cv_score',
-            name='get_initial_score_node'
+            name='get_initial_score_node',
+            namespace='hyperparameter_tuning'
         ),
         node(
             func=optimize_lr_hyperparams,
             inputs=['train_model', 'params:params'],
             outputs=['LR_optuna_params','LR_optuna_params_'],
-            name='optimize_lr_hyperparams_node'
+            name='optimize_lr_hyperparams_node',
+            namespace='hyperparameter_tuning'
         ),
         node(
             func=optimize_lgbm_hyperparams,
             inputs=['train_model', 'params:params'],
             outputs=['LGBM_optuna_params','LGBM_optuna_params_'],
-            name='optimize_lgbm_hyperparams_node'
+            name='optimize_lgbm_hyperparams_node',
+            namespace='hyperparameter_tuning'
         ),
         node(
             func=optimize_xgb_hyperparams,
             inputs=['train_model', 'params:params'],
             outputs=['XGB_optuna_params','XGB_optuna_params_'],
-            name='optimize_xgb_hyperparams_node'
+            name='optimize_xgb_hyperparams_node',
+            namespace='hyperparameter_tuning'
         ),
         node(
             func=eval_best_models,
