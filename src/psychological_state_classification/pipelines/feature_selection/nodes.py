@@ -75,11 +75,12 @@ def _get_feat_sfs(train, params):
     }
 
     for name, model in models.items():
-        sfs = SequentialFeatureSelector(model,
-                                        n_features_to_select=n_vars,
-                                        direction=params['method'])
-        sfs.fit(train[columns], train[target_col])
-        results[name] = sfs.get_feature_names_out()
+        if name in params['kwarg']:
+            sfs = SequentialFeatureSelector(model,
+                                            n_features_to_select=n_vars,
+                                            direction=params['method'])
+            sfs.fit(train[columns], train[target_col])
+            results[name] = sfs.get_feature_names_out()
     return pd.DataFrame(results)
 
 def _get_selected_features(train,stat_res,corr_res,params):

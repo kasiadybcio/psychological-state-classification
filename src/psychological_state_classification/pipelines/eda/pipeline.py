@@ -90,7 +90,6 @@ def create_pipeline(**kwargs) -> Pipeline:
             name="plot_Mood_State_by_Gender_distribution",
             namespace='plotting2'
         ),
-
         node(
             plot_Age_vs_Mood_State,
             inputs="train_data",
@@ -112,7 +111,6 @@ def create_pipeline(**kwargs) -> Pipeline:
             name="plot_Skin_Temp_vs_Mood_StateV_px",
             namespace='plotting2'
         ),
-
         node(
             plot_Heart_Rate_vs_HRV,
             inputs="train_data",
@@ -122,4 +120,50 @@ def create_pipeline(**kwargs) -> Pipeline:
         )
     ])
 
-    return pipeline([plotting1, plotting2])
+    plotting3 = pipeline([
+        node(
+            plot_confusion_matrix_xgb,
+            inputs="y_test_preds",
+            outputs="plot_confusion_matrix_xgb_px",
+            name="plot_confusion_matrix_xgb_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_confusion_matrix_lgbm,
+            inputs="y_test_preds",
+            outputs="plot_confusion_matrix_lgbm_px",
+            name="plot_confusion_matrix_lgbm_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_confusion_matrix_lr,
+            inputs="y_test_preds",
+            outputs="plot_confusion_matrix_lr_px",
+            name="plot_confusion_matrix_lr_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_roc_auc_xgb,
+            inputs="y_test_preds",
+            outputs="plot_roc_auc_xgb_px",
+            name="plot_roc_auc_xgb_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_roc_auc_lgbm,
+            inputs="y_test_preds",
+            outputs="plot_roc_auc_lgbm_px",
+            name="plot_roc_auc_lgbm_px",
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_roc_auc_lr,
+            inputs="y_test_preds",
+            outputs="plot_roc_auc_lr_px",
+            name="plot_roc_auc_lr_px",
+            namespace='plotting_evaluaton'
+        )
+        
+    ])
+
+    return pipeline([plotting1, plotting2, plotting3])

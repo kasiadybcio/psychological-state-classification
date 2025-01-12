@@ -412,3 +412,101 @@ plot_Time_px:
       xaxis_title: Time
       title: Time Distribution
 
+plot_confusion_matrix_xgb_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_confusion_matrix_xgb_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: density_heatmap
+    fig:
+      x: 'Predicted label'
+      y: "True label"
+      title: "Confusion Matrix - XGB test data"
+      color_continuous_scale: "Blues"
+      text_auto: True
+
+plot_confusion_matrix_lgbm_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_confusion_matrix_lgbm_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: density_heatmap
+    fig:
+      x: 'Predicted label'
+      y: "True label"
+      title: "Confusion Matrix - LGBM test data"
+      color_continuous_scale: "Blues"
+      text_auto: True
+
+plot_confusion_matrix_lr_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_confusion_matrix_lr_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: density_heatmap
+    fig:
+      x: 'Predicted label'
+      y: "True label"
+      title: "Confusion Matrix - LR test data"
+      color_continuous_scale: "Blues"
+      text_auto: True
+
+plot_roc_auc_xgb_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_roc_auc_xgb_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: line
+    fig:
+      x: 'FPR'
+      y: 'TPR'
+      color: "Class"
+      line_group: "Model"
+      hover_data: {"AUC": True, "Model": True, "Class": True}
+      title: 'ROC Curve - XGB test data'
+
+plot_roc_auc_lgbm_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_roc_auc_lgbm_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: line
+    fig:
+      x: 'FPR'
+      y: 'TPR'
+      color: "Class"
+      line_group: "Model"
+      hover_data: {"AUC": True, "Model": True, "Class": True}
+      title: 'ROC Curve - LGBM test data'
+
+plot_roc_auc_lr_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_roc_auc_lr_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: line
+    fig:
+      x: 'FPR'
+      y: 'TPR'
+      color: "Class"
+      line_group: "Model"
+      hover_data: {"AUC": True, "Model": True, "Class": True}
+      title: 'ROC Curve - LR test data'
