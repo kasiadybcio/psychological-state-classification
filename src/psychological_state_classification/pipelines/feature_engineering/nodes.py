@@ -7,6 +7,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from category_encoders import cat_boost
+import numpy as np
+np.random.seed(2025)
 
 logger = logging.getLogger(__name__)
 

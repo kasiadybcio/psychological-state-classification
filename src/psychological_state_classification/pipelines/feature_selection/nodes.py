@@ -9,6 +9,8 @@ from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+import numpy as np
+np.random.seed(2025)
 
 logger = logging.getLogger(__name__)
 

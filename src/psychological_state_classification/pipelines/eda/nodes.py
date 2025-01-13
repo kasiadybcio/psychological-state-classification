@@ -7,6 +7,8 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import roc_curve, auc
 from xgboost import XGBClassifier
+import numpy as np
+np.random.seed(2025)
 
 def plot_mood_state_distribution(data: pd.DataFrame):
     """

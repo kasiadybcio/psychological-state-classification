@@ -12,6 +12,8 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 import optuna
 import pandas as pd
+import numpy as np
+np.random.seed(2025)
 
 def _xgb_param_space(trial):
     trial.set_user_attr('objective', 'multi:softprob')

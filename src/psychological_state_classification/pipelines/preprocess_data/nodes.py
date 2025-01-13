@@ -5,6 +5,8 @@ generated using Kedro 0.19.10
 
 import logging
 import pandas as pd
+import numpy as np
+np.random.seed(2025)
 
 logger = logging.getLogger(__name__)
 

@@ -4,6 +4,8 @@ generated using Kedro 0.19.10
 """
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import numpy as np
+np.random.seed(2025)
 
 def split_data(data: pd.DataFrame, parameters: dict):
     """
