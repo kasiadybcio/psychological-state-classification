@@ -6,6 +6,6 @@
 
 fs_params:
   target: "Mood_State"
-  n_vars: all # all
+  n_vars: 15 # all
   method: "backward" # rank_stat, rank_corr, backward, forward
   kwarg: "GBM" # for rank_stat [anova, kruskal] for backward and forward [KNN,GBN,LogReg]

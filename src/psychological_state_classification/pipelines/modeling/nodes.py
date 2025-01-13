@@ -3,7 +3,7 @@ This is a boilerplate pipeline 'modeling'
 generated using Kedro 0.19.10
 """
 
-from sklearn.metrics import roc_auc_score, accuracy_score
+from sklearn.metrics import roc_auc_score, accuracy_score, f1_score
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
 from lightgbm import LGBMClassifier
@@ -144,6 +144,8 @@ def _evaluate_model(model, train, test, params):
         'train_accuracy': accuracy_score(y_train, y_pred_train_label),
         'test_roc_auc': roc_auc_score(y_test, y_pred_test_proba, multi_class='ovr'),
         'test_accuracy': accuracy_score(y_test, y_pred_test_label),
+        'train_f1': f1_score(y_train, y_pred_train_label, average='weighted'),
+        'test_f1': f1_score(y_test, y_pred_test_label, average='weighted')
     }
     cat_mapping = dict(enumerate(train[target_column].cat.categories))
     y_pred_train_proba = pd.DataFrame(y_pred_train_proba,
