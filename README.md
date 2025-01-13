@@ -1,12 +1,14 @@
-# psychological state classification
+# **Psychological State Classification**
 
-## Introduction to the project
+[**Kedro Visualization**](https://anfrejter.github.io/)
+
+## **Project Overview**
 
  This project focuses on a comprehensive dataset capturing physiological, behavioral, and environmental data from biosensors to study students' psychological states during educational activities. It lays the foundation for advanced machine learning research, aiming to develop models capable of real-time analysis of stress, emotional engagement, and focus. Key features include heart rate variability, EEG power bands, environmental factors like noise and light, and behavioral metrics such as focus duration. By offering insights into well-being and engagement, the dataset aims to advance mental health support and optimize learning experiences through innovative applications of biosensor technology.
 
- Dataset: https://www.kaggle.com/datasets/ziya07/psychological-state-identification-dataset
- 
- Kedro: http://anfrejter.github.io/
+ **Dataset**: [Psychological State Identification Dataset on Kaggle](https://www.kaggle.com/datasets/ziya07/psychological-state-identification-dataset)
+
+---
 
 ## Column description
 
@@ -33,8 +35,12 @@
 | 19. | Educational Level | High School, Undergraduate, Postgraduate |Categorical |
 | 20. | Study Major |Science, Arts, Engineering |Categorical |
 
-## Overview
+---
+
+## **Project Tools**
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
 
-This is your new Kedro project with Kedro-Viz setup, which was generated using `kedro 0.19.10`.
+This project is built using **Kedro** and **Kedro-Viz**, generated with `kedro 0.19.10`.
+
+---
