@@ -178,10 +178,17 @@ def create_pipeline(**kwargs) -> Pipeline:
             namespace='plotting_evaluaton'
         ),
         node(
-            plot_feature_importance_xgb,
+            plot_feature_importance_xgb_w,
             inputs=['train_model','XGB_optuna_params_'],
-            outputs="plot_fi_xgb_px",
-            name='plot_fi_xgb_px',
+            outputs="plot_fi_xgb_w_px",
+            name='plot_fi_xgb_w_px',
+            namespace='plotting_evaluaton'
+        ),
+        node(
+            plot_feature_importance_xgb_g,
+            inputs=['train_model','XGB_optuna_params_'],
+            outputs="plot_fi_xgb_g_px",
+            name='plot_fi_xgb_g_px',
             namespace='plotting_evaluaton'
         )
 

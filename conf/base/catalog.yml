@@ -559,9 +559,9 @@ plot_roc_auc_ada_px:
       hover_data: {"AUC": True, "Model": True, "Class": True}
       title: 'ROC Curve - ADA test data'
 
-plot_fi_xgb_px:
+plot_fi_xgb_w_px:
   type: plotly.PlotlyDataset
-  filepath: data/07_model_output/plot_fi_xgb_px.json
+  filepath: data/07_model_output/plot_fi_xgb_w_px.json
   versioned: True
   metadata:
     kedro-viz:
@@ -570,16 +570,37 @@ plot_fi_xgb_px:
     type: bar
     fig:
       x: 'importance'
-      y: 'features'
+      y: 'feature'
       orientation: 'h'
       color: 'importance'
       color_continuous_scale: 'Blues'
     layout:
-      title: 'Feature Importance (XGBoost)'
+      title: 'Feature Importance (XGBoost) weight'
       xaxis:
         title: 'Importance'
       yaxis:
         title: 'Features'
         categoryorder: 'total ascending'
-      height: 600
-      width: 800
+
+plot_fi_xgb_g_px:
+  type: plotly.PlotlyDataset
+  filepath: data/07_model_output/plot_fi_xgb_g_px.json
+  versioned: True
+  metadata:
+    kedro-viz:
+      layer: model_output
+  plotly_args:
+    type: bar
+    fig:
+      x: 'importance'
+      y: 'feature'
+      orientation: 'h'
+      color: 'importance'
+      color_continuous_scale: 'Blues'
+    layout:
+      title: 'Feature Importance (XGBoost) gain'
+      xaxis:
+        title: 'Importance'
+      yaxis:
+        title: 'Features'
+        categoryorder: 'total ascending'

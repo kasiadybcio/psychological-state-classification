@@ -178,14 +178,29 @@ def plot_roc_auc_ada(y_preds: pd.DataFrame):
     """
     return _plot_roc_auc(y_preds, 'ada')
 
-def plot_feature_importance_xgb(train, xgb_params):
+def plot_feature_importance_xgb_w(train, xgb_params):
     """
     Plot the feature importance of the target variable 
     """
     xgb = XGBClassifier(**xgb_params)
     xgb.fit(train.drop(columns=['Mood_State']), train['Mood_State'].cat.codes)
-    feature_importance = xgb.feature_importances_
-    features = train.drop(columns=['Mood_State']).columns
-    data = pd.DataFrame({'features': features, 'importance': feature_importance})
-    data = data.sort_values('importance', ascending=False)
-    return data
+    booster = xgb.get_booster()
+
+    weight_importance = booster.get_score(importance_type='weight')
+    df = (pd.DataFrame(list(weight_importance.items()), columns=['feature', 'importance'])
+        .sort_values(by='importance', ascending=False))
+    return df
+
+def plot_feature_importance_xgb_g(train, xgb_params):
+    """
+    Plot the feature importance of the target variable 
+    """
+    xgb = XGBClassifier(**xgb_params)
+    xgb.fit(train.drop(columns=['Mood_State']), train['Mood_State'].cat.codes)
+    
+    booster = xgb.get_booster()
+    gain_importance = booster.get_score(importance_type='gain')
+    df = (pd.DataFrame(list(gain_importance.items()), columns=['feature', 'importance'])
+                .sort_values(by='importance', ascending=False))
+
+    return df
