@@ -5,6 +5,8 @@
  This project focuses on a comprehensive dataset capturing physiological, behavioral, and environmental data from biosensors to study students' psychological states during educational activities. It lays the foundation for advanced machine learning research, aiming to develop models capable of real-time analysis of stress, emotional engagement, and focus. Key features include heart rate variability, EEG power bands, environmental factors like noise and light, and behavioral metrics such as focus duration. By offering insights into well-being and engagement, the dataset aims to advance mental health support and optimize learning experiences through innovative applications of biosensor technology.
 
  Dataset: https://www.kaggle.com/datasets/ziya07/psychological-state-identification-dataset
+ 
+ Kedro: http://anfrejter.github.io/
 
 ## Column description
 
